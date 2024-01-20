@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import WelcomeScreen from './components/WelcomeScreen';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className='bg-blue-500 text-white p-4'>Shopping List</h1>
+    <div className='flex items-center justify-center min-h-screen'>
+      <div className='bg-white shadow-md p-8 rounded-md'>
+        <WelcomeScreen />
+      </div>
     </div>
   );
 }
 
 export default App;
+
