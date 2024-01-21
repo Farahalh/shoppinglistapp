@@ -1,20 +1,29 @@
-import React, {useState, ChangeEvent, FormEvent} from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import Button from "./Button";
+import ItemPage from "./ItemPage";
 
 function ItemListPage() {
-const [inputItem, setInputItem] = useState<string>("");
-const [submittedItem, setSubmittedItem] = useState<string | null>(null);
+  // user input state
+  const [inputItem, setInputItem] = useState<string>("");
+  // maintain items list state
+  const [itemsList, setItemList] = useState<string[]>([]);
 
-const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-  setInputItem(event.target.value);
-  console.log(event.target.value);
-};
+  // input change handler
+  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputItem(event.target.value);
+  };
 
-const submitHandler = (event: FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  setSubmittedItem(inputItem);
-  setInputItem("");
-};
+  // form submit handler
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // if not empty...
+    if (inputItem.trim() !== "") {
+      // ... update items list
+      setItemList((prevItems) => [...prevItems, inputItem]);
+      // Clear input field
+      setInputItem("");
+    }
+  };
 
   return (
     <div className="ItemListPage p-6">
@@ -26,9 +35,11 @@ const submitHandler = (event: FormEvent<HTMLFormElement>) => {
           value={inputItem}
           onChange={changeHandler}
         />
+        {/*Button to submit form input*/}
         <Button />
       </form>
-      {submittedItem && (<p>You typed: {submittedItem}</p>)}
+      {/*Display items list*/}
+      <ItemPage items={itemsList} />
     </div>
   );
 }
