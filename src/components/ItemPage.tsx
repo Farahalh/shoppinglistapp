@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import EmptyStateImg from '../images/emptystate-stevengaan.png';
 
 // specify props received in component
@@ -14,7 +15,7 @@ function ItemPage({ items }: ItemsPageProps) {
         <ul>
           {items.map((item: string, index: number) => (
             <li key={index}>
-              <input type="checkbox" /> {item}
+              <Link to={`/items/${index}`}><input type="checkbox" /> {item}</Link>
             </li>
           ))}
         </ul>

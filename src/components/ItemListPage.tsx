@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Button from "./Button";
 import ItemPage from "./ItemPage";
+import ItemDetailsPage from "./ItemDetailsPage";
 
 function ItemListPage() {
   // user input state
@@ -39,7 +41,12 @@ function ItemListPage() {
         <Button />
       </form>
       {/*Display items list*/}
-      <ItemPage items={itemsList} />
+      <Routes>
+      <Route path="*" element={<ItemPage items={itemsList} />} />
+      <Route 
+      path="/items/:itemId" 
+      element={<ItemDetailsPage items={itemsList} />} />
+      </Routes>
     </div>
   );
 }
