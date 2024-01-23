@@ -1,8 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { Route, Routes, Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import EmptyStateImg from '../images/emptystate-stevengaan.png';
 import Button from "./common/Button";
-import ItemDetailsPage from "./ItemDetailsPage";
 
 function HomePage() {
   // user input state
@@ -67,8 +66,8 @@ function HomePage() {
           {itemsList.map((item: string, index: number) => (
             <li key={index}>
 
-              {/*Link to ItemDetailsPage to Edit & Delete item, routing not working*/}
-              <Link className='p-4' to={`/items/${index}`}><input type="checkbox" /> {item}</Link>
+              {/*Display input item*/}
+              <p className='p-4'>{item}</p>
 
               {/*Edit and prompt for to input newValue for item*/}
               <button 
@@ -97,9 +96,6 @@ function HomePage() {
         </div>
       )}
         {/*Route path not correct yet*/}
-      <Routes>
-        <Route path="/items/:itemId" element={<ItemDetailsPage items={itemsList} />} />
-      </Routes>
     </div>
   );
     }
