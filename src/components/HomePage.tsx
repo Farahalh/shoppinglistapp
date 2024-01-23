@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { BrowserRouter as Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import EmptyStateImg from '../images/emptystate-stevengaan.png';
 import Button from "./common/Button";
 import ItemDetailsPage from "./ItemDetailsPage";
