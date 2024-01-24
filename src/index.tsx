@@ -7,40 +7,13 @@ import {
 import './styles/index.css';
 import reportWebVitals from './reportWebVitals';
 import HomePage from './components/HomePage';
-import ErrorPage from './errorPage';
+import ErrorPage from './components/errorPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "*",
     element: <HomePage />,
     errorElement: <ErrorPage />,
-    /*loader: rootLoader,
-    action: rootAction,
-    children: [
-      {
-        errorElement: <ErrorPage />,
-        children:[
-          { index: true, element: <Index /> },
-          {
-            path: "contacts/:contactId",
-            element: <Contact />,
-            loader: contactLoader,
-            action: contactAction,
-          },
-          {
-            path: "contacts/:contactId/edit",
-            element: <EditContact />,
-            loader: contactLoader,
-            action: editAction,
-          },
-          {
-            path: "contacts/:contactId/destroy",
-            action: destroyAction,
-            errorElement: <div>Oops! There was an error.</div>,
-          },
-        ]
-      }
-    ],*/
   },
 ]);
 
