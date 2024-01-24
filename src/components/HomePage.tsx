@@ -4,7 +4,6 @@ import {
   Route,
   Link,
   Form,
-  useNavigate,
 } from "react-router-dom";
 import EmptyStateImg from '../images/emptystate-stevengaan.png';
 import Button from "./common/Button";
@@ -14,7 +13,6 @@ import ItemDetailsPage from "./ItemDetailsPage";
 function HomePage() {
   const [inputItem, setInputItem] = useState<string>("");
   const [itemsList, setItemList] = useState<string[]>([]);
-  const navigate = useNavigate();
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setInputItem(event.target.value);
