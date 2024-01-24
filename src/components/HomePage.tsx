@@ -1,7 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { Route, Routes, Link } from 'react-router-dom';
+import { 
+  Link,
+  Form,
+} from "react-router-dom";
 import EmptyStateImg from '../images/emptystate-stevengaan.png';
 import Button from "./common/Button";
+import Header from "./common/Header";
 import ItemDetailsPage from "./ItemDetailsPage";
 
 function HomePage() {
@@ -48,8 +52,11 @@ function HomePage() {
   };
 
   return (
-    <div className="HomePage p-6">
-      <form onSubmit={submitHandler} className="flex items-center">
+    <div className="HomePage flex flex-col items-center justify-center min-h-screen p-6">
+
+      <Header />
+
+      <Form onSubmit={submitHandler} className="flex items-center">
         {/*Input items to list */}
         <input
           className="border border-gray-300 p-1 mr-2 rounded-l-md focus:outline-none flex-1"
@@ -60,7 +67,8 @@ function HomePage() {
         />
         {/*Button to submit form input*/}
         <Button label={"Add"}/>
-      </form>
+      </Form>
+
       {/*Display items list*/}
       {itemsList.length > 0 ? (
         <ul>
@@ -68,7 +76,9 @@ function HomePage() {
             <li key={index}>
 
               {/*Link to ItemDetailsPage to Edit & Delete item, routing not working*/}
-              <Link className='p-4' to={`/items/${index}`}><input type="checkbox" /> {item}</Link>
+              <Link className='p-4' to={`/items/${index}`}>
+                {item}
+              </Link>
 
               {/*Edit and prompt for to input newValue for item*/}
               <button 
@@ -91,15 +101,19 @@ function HomePage() {
       ) : (
 
         // Display when list is empty
-        <div>
-          <p>No Items Yet</p>
-          <img className='w-40 md:w-56 lg:w-72 max-w-full h-auto mb-5' src={EmptyStateImg} alt='emptyState'/>
+        <div className="text-center">
+          <p className="text-gray-500">No Items Yet</p>
+          <img 
+          className='w-40 md:w-56 lg:w-72 max-w-full h-auto mb-5' 
+          src={EmptyStateImg} 
+          alt='emptyState'
+          />
         </div>
       )}
         {/*Route path not correct yet*/}
-      <Routes>
+      {/*<Routes>
         <Route path="/items/:itemId" element={<ItemDetailsPage items={itemsList} />} />
-      </Routes>
+      </Routes>*/}
     </div>
   );
     }
